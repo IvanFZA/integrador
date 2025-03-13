@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <script src="Js/validar_sesion.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador - Plantas Resilientes</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="CSS/menu_admin.css">
+</head>
+
+<body>
+    <div id="admin-content" style="display: none;">
+        <header class="bg-white shadow-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="-ml-2">
+                        <button id="hamburger"
+                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-200 focus:outline-none">
+                            <span class="sr-only">Abrir menú</span>
+                            <svg class="h-6 w-6" xmlns="https://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16m-7 6h7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex items-center">
+                        <h1 class="text-xl font-bold text-gray-800">Panel de Administración - Plantas</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="overlay"></div>
+
+        <nav id="menu">
+            <button class="close-menu" aria-label="Cerrar menú">&times;</button>
+            <ul class="flex flex-col py-6 px-4">
+                <li><a href="#" id="agregarPlanta">Agregar Planta</a></li>
+                <li><a href="#" id="VerPlanta">Ver Plantas</a></li>
+                <li><a href="#" id="eliminarPlanta">Eliminar Planta</a></li>
+                <li><a href="#" id="agregarConsorcio">Agregar Consorcio</a></li>
+                <li><a href="#" id="modificarConsorcio">Ver Consorcios</a></li>
+                <li><a href="#" id="eliminarConsorcio">Eliminar Consorcio</a></li>
+                <li><a href="#" id="verPreguntasFrecuentes">Gestionar Preguntas Frecuentes</a></li>
+                <li><a href="#" id="gestionarCatalogos">Gestionar Categoria</a></li>
+                <li><a href="#" id="agregarAdministrador">Agregar Administrador</a></li>
+                <li><a href="#" id="cerrarSesion">Cerrar Sesión</a></li>
+            </ul>
+            <!-- Contenedor para la imagen -->
+            <div class="menu-image-container p-4">
+                <img src="imagenes/logob.png" alt="Imagen decorativa del menú" class="w-full rounded-lg shadow-md">
+            </div>
+        </nav>
+
+        </nav>
+
+        <main id="content">
+            <h2>Bienvenido al panel de administración</h2>
+            <p>Aquí puedes gestionar las plantas, consorcios y preguntas frecuentes.</p>
+        </main>
+    </div>
+
+    <!-- Opción de carga mientras se verifica la sesión -->
+    <div id="loading" style="text-align: center; padding: 20px;">
+        <p>Verificando sesión...</p>
+    </div>
+
+    <script src="js/validar_sesion.js"></script>
+    <script src="Js/cargarpestañas.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</body>
+
+</html>

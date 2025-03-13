@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Consorcios</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="CSS/mapa.css">
+</head>
+<body>
+
+    <!-- Encabezado con ícono -->
+    <header class="header">
+        <h1><i class="fas fa-map-marker-alt"></i> Mapa de Consorcios</h1>
+    </header>
+
+    <!-- Contenedor del mapa -->
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+
+    <!-- Botón Volver al Inicio -->
+    <div class="button-container">
+        <a href="index.html" class="btn-back">
+            <i class="fas fa-home"></i> Volver al Inicio
+        </a>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Inicializar el mapa y establecer la vista en una ubicación y nivel de zoom
+        var map = L.map('map').setView([20.483004598696308, -99.21811072823648], 13);
+    
+        // Agregar la capa base de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+    
+        // Cargar los consorcios desde obtener_consorcios.php
+        fetch('php/obtener_consorcios.php')
+    .then(response => response.json())
+    .then(data => {
+        if (data.length === 0) {
+            alert("No hay consorcios para mostrar.");
+            return;
+        }
+
+        console.log("Consorcios cargados:", data);
+
+        data.forEach(consorcio => {
+            if (!isNaN(consorcio.latitud) && !isNaN(consorcio.longitud)) {
+                let popupContent = `
+                    <div style="text-align: center;">
+                        <h3>${consorcio.nombre}</h3>
+                        <img src="${consorcio.imagen}" alt="${consorcio.nombre}" style="width: 100px; height: auto; border-radius: 5px; margin-bottom: 5px;">
+                        <p>${consorcio.descripcion}</p>
+                        <a href="php/user_formulario_ver_consorcio.php?id_consorcio=${consorcio.id}&from=mapa" class="btn btn-primary">Ver más</a>
+                    </div>
+                `;
+
+                L.marker([consorcio.latitud, consorcio.longitud]).addTo(map)
+                    .bindPopup(popupContent);
+            } else {
+                console.error("Coordenadas inválidas para:", consorcio);
+            }
+        });
+    })
+    .catch(error => console.error('Error al cargar consorcios:', error));
+
+    </script>
+    
+
+</body>
+</html>

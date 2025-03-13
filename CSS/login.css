@@ -1,0 +1,233 @@
+/* ----- ESTILOS GENERALES ----- */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../imagenes/login.jpg'); /* Imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ----- CONTENEDOR DEL FORMULARIO ----- */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 50, 0, 0.4);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    color: #145a32;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ----- GRUPOS DE FORMULARIO ----- */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1e8449;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #52be80;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f0f8f0;
+    color: #145a32;
+}
+
+.form-group input::placeholder {
+    color: #7f8c8d;
+}
+
+.form-group input:focus {
+    border-color: #28b463;
+    outline: none;
+    box-shadow: 0 0 12px rgba(40, 180, 99, 0.5);
+}
+
+/* ----- BOTÓN DE INICIO DE SESIÓN ----- */
+.btn-login {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #28b463;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+.btn-login:hover {
+    background-color: #1d8348;
+    transform: translateY(-2px);
+}
+
+.btn-login:active {
+    transform: translateY(0);
+}
+
+/* ----- BOTÓN DE REGRESAR ----- */
+.btn-regresar {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #3498db; /* Azul para el botón de regresar */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    margin-top: 1rem; /* Espacio superior */
+}
+
+.btn-regresar:hover {
+    background-color: #2980b9; /* Azul más oscuro al pasar el mouse */
+    transform: translateY(-2px);
+}
+
+.btn-regresar:active {
+    transform: translateY(0);
+}
+
+/* ----- MENSAJE DE ERROR ----- */
+.error-message {
+    color: #c0392b;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ----- ESTILOS DEL MODAL ----- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #145a32;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #000;
+}
+
+.modal-buttons {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.modal-buttons button {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex: 1;
+    font-weight: bold;
+}
+
+#retryButton {
+    background-color: #16a085;
+    color: #fff;
+}
+
+#retryButton:hover {
+    background-color: #138d75;
+    transform: translateY(-2px);
+}
+
+#goToMenuButton {
+    background-color: #e67e22;
+    color: #fff;
+}
+
+#goToMenuButton:hover {
+    background-color: #d35400;
+    transform: translateY(-2px);
+}
+
+/* ----- ESTILOS RESPONSIVE ----- */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .form-group input {
+        padding: 0.65rem;
+    }
+
+    .btn-login, .btn-regresar {
+        padding: 0.65rem;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .modal-buttons button {
+        padding: 0.65rem;
+    }
+}

@@ -1,0 +1,149 @@
+/* Estilo general de las tarjetas */
+.card, .catalog-card {
+    border-radius: 1.5rem; /* Borde más redondeado */
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    background-color: #ffffff; /* Fondo blanco para la tarjeta */
+    position: relative;
+}
+
+/* Efecto hover de las tarjetas */
+.card:hover, .catalog-card:hover {
+    transform: translateY(-12px); /* Efecto de elevación */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Sombra más profunda */
+    filter: brightness(1.05); /* Efecto de brillo al pasar el ratón */
+}
+
+/* Estilo de la imagen dentro de la tarjeta */
+.card img, .catalog-card img {
+    height: 220px; /* Ajuste de la altura de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el área de la tarjeta */
+    width: 100%;
+    border-bottom: 2px solid #eee; /* Añade una línea divisoria */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Estilo del título de la tarjeta */
+.card-title, .catalog-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600; /* Peso de la fuente más notorio */
+    color: #2c3e50;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Estilo para el texto o contenido en las tarjetas */
+.card-text, .catalog-card p {
+    color: #7f8c8d;
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: center;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* Estilo del spinner */
+.spinner-border {
+    margin: 20px auto;
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.25rem;
+    border-top-color: #3498db; /* Color de la parte superior del spinner */
+}
+
+/* Estilo de la animación de carga de contenido */
+#content {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out; /* Animación de aparición suave */
+}
+
+/* Animación de desvanecimiento */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Contenedor de tarjetas */
+.card-container, .catalog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+    padding: 10px;
+    max-width: 1200px;
+}
+
+/* Estilo de enlaces en catalog-card */
+.catalog-card a {
+    margin-right: 10px;
+    padding: 8px 12px;
+    text-decoration: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.catalog-card a.delete {
+    background-color: #FF6347;
+}
+
+.catalog-card a:hover {
+    background-color: #0056b3;
+}
+
+.catalog-card a.delete:hover {
+    background-color: #d93829;
+}
+
+/* Fondo suave y más claro para la tarjeta al hacer hover */
+.card:hover .card-title, .catalog-card:hover h3 {
+    color: #3498db; /* Cambia el color del título en hover */
+}
+
+/* Botón flotante */
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.floating-button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .card, .catalog-card {
+        margin: 10px 0;
+    }
+
+    .card-title, .catalog-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .card img, .catalog-card img {
+        height: 180px;
+    }
+}

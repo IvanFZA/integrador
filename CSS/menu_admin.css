@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+:root {
+    --color-primary: #28df28;
+    --color-secondary: #2d6a4f;
+    --color-hover: #4a8c5d;
+    --color-text: #3c4a3a;
+    --color-light: #f4f9f4;
+    --color-accent: #0f0f0e;
+    --transition-speed: 0.3s;
+    --menu-width: 280px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-light);
+    color: var(--color-text);
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--color-primary);
+    color: rgb(68, 134, 15);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 10; /* Ajustado para que no cubra otros elementos */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .max-w-7xl {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+header h1 {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 700;
+}
+
+/* Hamburger Button */
+#hamburger {
+    padding: 0.5rem;
+    background-color: transparent;
+    border: none;
+    color: var(--color-accent);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color var(--transition-speed) ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#hamburger:hover {
+    background-color: var(--color-hover);
+}
+
+#hamburger:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+#hamburger svg {
+    fill: var(--color-accent);
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Sliding Menu */
+#menu {
+    position: fixed;
+    top: 0;
+    left: calc(-1 * var(--menu-width));
+    width: var(--menu-width);
+    height: 100vh;
+    background-color: var(--color-secondary);
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    padding: 1.5rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#menu.open {
+    transform: translateX(var(--menu-width));
+}
+
+/* Close Button */
+#menu button.close-menu {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: white;
+    transition: transform var(--transition-speed) ease;
+    padding: 0.5rem;
+    line-height: 1;
+}
+
+#menu button.close-menu:hover {
+    transform: rotate(90deg);
+}
+
+#menu button.close-menu:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+/* Menu Navigation */
+#menu ul {
+    list-style: none;
+    margin-top: 3rem;
+}
+
+#menu li:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+#menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+}
+
+#menu a:hover, 
+#menu a:focus {
+    background-color: var(--color-hover);
+    transform: translateX(0.5rem);
+    outline: none;
+}
+
+/* Overlay */
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease,
+                visibility var(--transition-speed) ease;
+    backdrop-filter: blur(2px);
+    z-index: 999;
+}
+
+#overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Main Content */
+main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Typography */
+h2 {
+    color: var(--color-secondary);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Image Styles - New Adjustments 
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem 0.5rem 0 0;
+    object-fit: cover;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;  Ajusta el borde de la tarjeta 
+    position: relative;
+    z-index: 5; Asegura que la tarjeta esté por encima de otros elementos 
+}
+*/
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+    
+    #menu {
+        width: 100%;
+        max-width: var(--menu-width);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
